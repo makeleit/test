@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>KASPIY — Эволюция баскетболиста</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --blue:#1e7bff; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#222;font-family:'Oswald',sans-serif;}
+
+  .poster{
+    position:relative;width:1080px;height:1350px;overflow:hidden;
+    background:radial-gradient(120% 80% at 50% 0%, #1c2230 0%, #0c1118 55%, #070a10 100%);
+    color:#fff;
+  }
+  .poster::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(40% 18% at 12% 5%, rgba(120,170,255,.25), transparent 70%),
+      radial-gradient(40% 18% at 88% 5%, rgba(120,170,255,.25), transparent 70%);
+  }
+  .floor{
+    position:absolute;left:0;right:0;bottom:0;height:250px;
+    background:linear-gradient(180deg,#3a2a1a 0%, #1d140b 100%);
+    box-shadow:0 -50px 100px rgba(0,0,0,.6) inset;
+  }
+
+  .top{position:relative;text-align:center;padding:60px 30px 0;z-index:3;}
+  .kicker{font-size:30px;letter-spacing:10px;font-weight:600;color:#e9eef7;margin-bottom:14px;}
+  .title{font-family:'Anton',sans-serif;line-height:.9;letter-spacing:0;text-transform:uppercase;}
+  .title .big{font-size:150px;color:#fff;text-shadow:0 6px 26px rgba(0,0,0,.5);}
+  .title .of{font-size:42px;letter-spacing:14px;color:#cdd6e4;margin:16px 0 6px;font-family:'Oswald';font-weight:600;}
+  .title .blue{font-size:98px;color:var(--blue);text-shadow:0 6px 26px rgba(0,40,120,.6);}
+  .divider{width:78%;height:4px;margin:30px auto 22px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+  .sub{font-size:30px;letter-spacing:5px;font-weight:500;color:#dfe6f1;text-transform:uppercase;}
+
+  .players{position:absolute;left:0;right:0;bottom:248px;height:600px;display:flex;align-items:flex-end;justify-content:center;gap:26px;z-index:2;
+    filter:drop-shadow(0 22px 26px rgba(0,0,0,.55));}
+  .pl{width:auto;display:block;}
+  .pl.p1{height:230px;} .pl.p2{height:310px;} .pl.p3{height:385px;} .pl.p4{height:455px;} .pl.p5{height:530px;}
+  .glow{position:absolute;left:0;right:0;bottom:248px;height:80px;z-index:1;
+    background:radial-gradient(60% 100% at 50% 100%, rgba(30,123,255,.28), transparent 70%);}
+
+  .timeline{position:absolute;left:0;right:0;bottom:60px;z-index:4;padding:0 50px;}
+  .track{position:relative;height:3px;background:rgba(255,255,255,.25);margin-bottom:26px;}
+  .stops{display:flex;justify-content:space-between;}
+  .stop{text-align:center;flex:1;}
+  .dot{width:24px;height:24px;border-radius:50%;background:var(--blue);border:5px solid #0c1118;margin:-39px auto 14px;box-shadow:0 0 0 5px rgba(30,123,255,.3);}
+  .stop .lbl{font-size:22px;letter-spacing:3px;color:#cfd7e4;font-weight:500;}
+  .stop .age{font-family:'Anton';font-size:40px;color:var(--blue);letter-spacing:1px;}
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="floor"></div>
+    <div class="top">
+      <div class="kicker">KASPIY ACADEMY</div>
+      <div class="title">
+        <div class="big">ЭВОЛЮЦИЯ</div>
+        <div class="of">НАСТОЯЩЕГО</div>
+        <div class="blue">БАСКЕТБОЛИСТА</div>
+      </div>
+      <div class="divider"></div>
+      <div class="sub">На чём сосредоточиться в каждом возрасте?</div>
+    </div>
+
+    <!-- reusable player illustration (white player, black jersey) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="player" viewBox="0 0 130 340">
+        <!-- legs (skin) -->
+        <path d="M52 232 q-3 36 -4 70 l14 0 q3 -34 5 -64 z" fill="#e7b48d"/>
+        <path d="M78 232 q3 36 4 70 l-14 0 q-3 -34 -5 -64 z" fill="#e0a87e"/>
+        <!-- shoes -->
+        <path d="M44 300 h22 v10 q0 8 -10 8 h-18 q-6 0 -6 -6 q0 -6 6 -8 z" fill="#0c0d10"/>
+        <path d="M64 300 h22 q6 2 6 8 q0 6 -6 6 h-18 q-10 0 -10 -8 z" fill="#15171c"/>
+        <path d="M22 312 h30 v6 h-26 q-4 0 -4 -4 z" fill="#e9edf3"/>
+        <path d="M76 312 h30 q0 6 -4 6 h-26 z" fill="#e9edf3"/>
+        <!-- shorts -->
+        <path d="M40 168 h50 q6 0 6 8 l-4 58 q-1 8 -9 8 h-12 l-4 -40 h-4 l-4 40 h-12 q-8 0 -9 -8 l-4 -58 q0 -8 6 -8 z" fill="#16181f"/>
+        <path d="M65 176 v66" stroke="#0a0b0e" stroke-width="2"/>
+        <!-- torso / tank -->
+        <path d="M44 96 q21 -8 42 0 l6 78 q-27 9 -54 0 z" fill="#1c1f27"/>
+        <path d="M52 92 l13 6 13 -6 -4 80 h-18 z" fill="#23262f"/>
+        <path d="M50 100 q15 -6 30 0" stroke="#aeb6c4" stroke-width="2" fill="none" opacity=".5"/>
+        <!-- arms (skin) holding ball low -->
+        <path d="M45 100 q-12 26 -6 54 l12 -2 q-4 -26 6 -48 z" fill="#e7b48d"/>
+        <path d="M85 100 q12 26 6 54 l-12 -2 q4 -26 -6 -48 z" fill="#e0a87e"/>
+        <!-- ball -->
+        <circle cx="65" cy="158" r="24" fill="#d2772f"/>
+        <path d="M65 134 v48 M41 158 h48 M48 140 q17 18 0 36 M82 140 q-17 18 0 36" stroke="#8f4a18" stroke-width="2.5" fill="none"/>
+        <!-- neck + head -->
+        <rect x="58" y="80" width="14" height="16" rx="4" fill="#e7b48d"/>
+        <circle cx="65" cy="62" r="22" fill="#eebb91"/>
+        <!-- hair -->
+        <path d="M44 60 q-2 -26 21 -28 q23 2 21 28 q-6 -14 -21 -13 q-15 -1 -21 13 z" fill="#241a12"/>
+      </symbol>
+    </svg>
+
+    <div class="glow"></div>
+    <div class="players">
+      <svg class="pl p1" viewBox="0 0 130 340"><use href="#player"/></svg>
+      <svg class="pl p2" viewBox="0 0 130 340"><use href="#player"/></svg>
+      <svg class="pl p3" viewBox="0 0 130 340"><use href="#player"/></svg>
+      <svg class="pl p4" viewBox="0 0 130 340"><use href="#player"/></svg>
+      <svg class="pl p5" viewBox="0 0 130 340"><use href="#player"/></svg>
+    </div>
+
+    <div class="timeline">
+      <div class="track"></div>
+      <div class="stops">
+        <div class="stop"><div class="dot"></div><div class="lbl">ВОЗРАСТ</div><div class="age">5–7</div></div>
+        <div class="stop"><div class="dot"></div><div class="lbl">ВОЗРАСТ</div><div class="age">8–10</div></div>
+        <div class="stop"><div class="dot"></div><div class="lbl">ВОЗРАСТ</div><div class="age">11–12</div></div>
+        <div class="stop"><div class="dot"></div><div class="lbl">ВОЗРАСТ</div><div class="age">13–14</div></div>
+        <div class="stop"><div class="dot"></div><div class="lbl">ШКОЛА</div><div class="age">15–18</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
